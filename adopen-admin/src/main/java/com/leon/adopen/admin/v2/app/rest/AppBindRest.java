@@ -26,6 +26,13 @@ public class AppBindRest {
     @Resource
     private AppBindService appBindService;
 
+    /**
+     * 产品绑定列表
+     *
+     * @param request 产品绑定列表-request
+     * @param page    分页信息
+     * @return {@link  ResResult}  同一返回结果集
+     */
     @PostMapping(value = "/list")
     public ResResult listAppBind(@RequestBody AppBindListRequest request, @RequestBody JsonPage<T> page) {
         log.info("[产品绑定列表 请求], request -> {}, page -> {}", JSON.toJSONString(request), JSON.toJSONString(page));
