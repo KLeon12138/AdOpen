@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <jmxConfigurator/>
+    <!-- 控制台输出日志 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/Users/leon/Documents/worker/adopen/adopen-dock/system.log.%d{yyyy-MM-dd}
+            </fileNamePattern>
+            <maxHistory>2</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%red(%d{yyyy-MM-dd HH:mm:ss.SSS}) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger)
+                [%file:%line] - %cyan(%msg%n)
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="CLICK"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/Users/leon/Documents/worker/adopen/adopen-dock/click.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>2</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger [%file:%line] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="CALLBACK"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                /Users/leon/Documents/worker/adopen/adopen-dock/callback.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>2</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger [%file:%line] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.leon.adopen.dock.v2.app.service.impl.ClickServiceImpl" level="INFO"
+            additivity="false">
+        <appender-ref ref="CLICK"/>
+    </logger>
+
+    <logger name="com.leon.adopen.dock.v2.app.service.impl.BackServiceImpl" level="INFO"
+            additivity="false">
+        <appender-ref ref="CALLBACK"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <!--<appender-ref ref="STDOUT"/>-->
+    </root>
+
+</configuration>

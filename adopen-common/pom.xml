@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>adopen</artifactId>
+        <groupId>com.leon.adopen</groupId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>adopen-common</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.leon.adopen</groupId>
+            <artifactId>adopen-domain</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+                <leon.adopen.host>http://www.adopen.leon.org.cn</leon.adopen.host>
+                <leon.adopen.jdbc.url>jdbc:mysql://118.190.24.63:3306/adopen</leon.adopen.jdbc.url>
+                <leon.adopen.jdbc.username>root</leon.adopen.jdbc.username>
+                <leon.adopen.jdbc.password>KLeon0505!`</leon.adopen.jdbc.password>
+                <leon.adopen.redis.pool.host>118.190.24.63</leon.adopen.redis.pool.host>
+                <leon.adopen.redis.pool.port>6399</leon.adopen.redis.pool.port>
+                <leon.adopen.redis.pool.password>leon167943!</leon.adopen.redis.pool.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <spring.profiles.active>pro</spring.profiles.active>
+                <leon.adopen.host>http://www.adopen.leon.org.cn</leon.adopen.host>
+                <leon.adopen.jdbc.url>jdbc:mysql://118.190.24.63:3306/adopen</leon.adopen.jdbc.url>
+                <leon.adopen.jdbc.username>root</leon.adopen.jdbc.username>
+                <leon.adopen.jdbc.password>KLeon0505!`</leon.adopen.jdbc.password>
+                <leon.adopen.redis.pool.host>118.190.24.63</leon.adopen.redis.pool.host>
+                <leon.adopen.redis.pool.port>6399</leon.adopen.redis.pool.port>
+                <leon.adopen.redis.pool.password>leon167943!</leon.adopen.redis.pool.password>
+            </properties>
+        </profile>
+    </profiles>
+</project>

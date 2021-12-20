@@ -1,0 +1,26 @@
+package com.leon.adopen.dock.init;
+
+import com.leon.adopen.common.constants.app.AppCodeConstants;
+import com.leon.adopen.common.constants.app.AppLimitConstants;
+import com.leon.adopen.domain.manager.AppManager;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+
+/**
+ * @author leon
+ * @date 2021-12-20 14:51
+ */
+@Component
+@Slf4j
+public class InitAppLimit implements CommandLineRunner {
+    @Resource
+    private AppManager appManager;
+
+    @Override
+    public void run(String... args) throws Exception {
+        AppLimitConstants.LIMIT_YDWX_A1 = appManager.limitForApp(AppCodeConstants.YDWX_A1);
+    }
+}

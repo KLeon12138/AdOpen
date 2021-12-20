@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: @spring.profiles.active@
+  message:
+    encoding: UTF-8
+  datasource:
+    url: jdbc:mysql://118.190.24.63:3306/adopen?autoReconnect=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: KLeon0505!`
+
+logging:
+  level:
+    root: ERROR
+    org.springframework: ERROR
+    com.leon.adopen.common: ERROR
