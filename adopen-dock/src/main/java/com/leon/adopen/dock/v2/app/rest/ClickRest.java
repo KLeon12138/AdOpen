@@ -1,5 +1,6 @@
 package com.leon.adopen.dock.v2.app.rest;
 
+import com.leon.adopen.common.constants.dock.ClickConstants;
 import com.leon.adopen.dock.v2.app.service.ClickService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -21,7 +22,7 @@ import javax.annotation.Resource;
 public class ClickRest {
     @Resource
     private ClickService clickService;
-    private static final String DEFAULT_RESULT = "ok";
+
 
     /**
      * 上报
@@ -36,6 +37,6 @@ public class ClickRest {
     @GetMapping("/click")
     public String click(@RequestParam String appid, @RequestParam String idfa, @RequestParam String ip, @RequestParam String channel, @RequestParam String callback) throws Exception {
         clickService.click(appid, idfa, ip, channel,callback);
-        return DEFAULT_RESULT;
+        return ClickConstants.DEFAULT_RESULT;
     }
 }
