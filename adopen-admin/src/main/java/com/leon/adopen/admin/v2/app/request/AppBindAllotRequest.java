@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * 产品绑定列表-request
+ * 产品绑定分配-request
  *
  * @author leon
- * @date 2021-12-20 18:34
+ * @date 2021-12-21 17:37
  */
 @Getter
 @Setter
-public class AppBindListRequest extends BaseAppBind {
+public class AppBindAllotRequest extends BaseAppBind {
 }

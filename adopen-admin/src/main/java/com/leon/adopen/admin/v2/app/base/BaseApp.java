@@ -84,4 +84,23 @@ public class BaseApp {
      * 备注
      */
     private String remark;
+
+    public BaseApp(Integer appId, String appCode, String appName, Byte platform, Byte type, Integer spId, String spName, BigDecimal price, Integer limitDay, Byte urlType, String previewUrl, String onlineUrl, Byte backFormat, Byte book, String demand, String remark) {
+        this.appId = appId;
+        this.appCode = appCode;
+        this.appName = appName;
+        this.platform = platform;
+        this.type = type;
+        this.spId = spId;
+        this.spName = spName;
+        this.price = price;
+        this.limitDay = limitDay;
+        this.urlType = urlType;
+        this.previewUrl = previewUrl;
+        this.onlineUrl = onlineUrl;
+        this.backFormat = backFormat;
+        this.book = book;
+        this.demand = demand;
+        this.remark = remark;
+    }
 }
