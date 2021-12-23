@@ -22,11 +22,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.leon.adopen</groupId>
-            <artifactId>adopen-common</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
@@ -82,30 +77,4 @@
             <version>1.2.59</version>
         </dependency>
     </dependencies>
-    <!--    <build>-->
-    <!--        <plugins>-->
-    <!--            <plugin>-->
-    <!--                <groupId>org.springframework.boot</groupId>-->
-    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-    <!--            </plugin>-->
-    <!--            <plugin>-->
-    <!--                <artifactId>maven-compiler-plugin</artifactId>-->
-    <!--                <configuration>-->
-    <!--                    <source>1.8</source>-->
-    <!--                    <target>1.8</target>-->
-    <!--                    <encoding>${project.build.sourceEncoding}</encoding>-->
-    <!--                </configuration>-->
-    <!--            </plugin>-->
-    <!--        </plugins>-->
-    <!--    </build>-->
-    <!--    <distributionManagement>-->
-    <!--        <repository>-->
-    <!--            <id>rdc-releases</id>-->
-    <!--            <url>https://packages.aliyun.com/maven/repository/2001860-release-sXn3lb/</url>-->
-    <!--        </repository>-->
-    <!--        <snapshotRepository>-->
-    <!--            <id>rdc-snapshots</id>-->
-    <!--            <url>https://packages.aliyun.com/maven/repository/2001860-snapshot-8kmFkP/</url>-->
-    <!--        </snapshotRepository>-->
-    <!--    </distributionManagement>-->
 </project>

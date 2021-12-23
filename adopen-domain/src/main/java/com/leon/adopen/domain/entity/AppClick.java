@@ -37,7 +37,7 @@ public class AppClick extends BaseIntIdEntity {
     private Integer spId;
 
     @Column(columnDefinition = "varchar(50) DEFAULT '' COMMENT '上游名称'")
-    private Integer spName;
+    private String spName;
 
     @Column(columnDefinition = "int(11) DEFAULT '0' COMMENT '渠道id'")
     private Integer cpId;

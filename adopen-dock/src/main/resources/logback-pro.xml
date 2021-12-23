@@ -43,6 +43,20 @@
         </layout>
     </appender>
 
+    <appender name="TASK"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                /data/logs/adopen/dock/task.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>2</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger [%file:%line] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
     <logger name="com.leon.adopen.dock.v2.app.service.impl.ClickServiceImpl" level="INFO"
             additivity="false">
         <appender-ref ref="CLICK"/>
@@ -51,6 +65,11 @@
     <logger name="com.leon.adopen.dock.v2.app.service.impl.BackServiceImpl" level="INFO"
             additivity="false">
         <appender-ref ref="CALLBACK"/>
+    </logger>
+
+    <logger name="com.leon.adopen.dock.v2.task" level="INFO"
+            additivity="false">
+        <appender-ref ref="TASK"/>
     </logger>
 
     <root level="INFO">

@@ -4,6 +4,7 @@ import com.leon.adopen.admin.common.request.RequestBase;
 import com.leon.adopen.admin.v2.sp.service.SpService;
 import com.leon.adopen.admin.v2.sp.vo.SpListVo;
 import com.leon.adopen.admin.v2.sp.vo.SpListVoPage;
+import com.leon.adopen.admin.v2.sp.vo.SpPullDownVo;
 import com.leon.adopen.common.exception.code.ExCode;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.jpa.JpaUtil;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author leon
@@ -40,7 +42,7 @@ public class SpServiceImpl implements SpService {
     public SpListVoPage listSp(RequestBase requestBase, JsonPage<T> page) {
         HashMap<String, Object> params = new HashMap<>(16);
         String hql = "select new com.leon.adopen.admin.v2.sp.vo.SpListVo" +
-                "(sp.id, sp.name, sp.dockerName, sp.dockerPhone, sp.dockerEmail, sp.dockerQq, sp.dockerWx, sp.dockerAddr, sp.needMain) " +
+                "(sp.dockerName, sp.dockerPhone, sp.dockerEmail, sp.dockerQq, sp.dockerWx, sp.dockerAddr, sp.id, sp.name, sp.needMain) " +
                 "from Sp sp where 1 = 1";
         if (!StringUtils.isEmpty(requestBase.getSpName())) {
             hql += " and sp.name like :spName";
@@ -67,6 +69,17 @@ public class SpServiceImpl implements SpService {
     public void saveSp(RequestBase requestBase) throws AdopenException {
         this.verifyRequest(requestBase);
         spDao.save(this.spBuilder(requestBase));
+    }
+
+    /**
+     * 下拉 SP 信息
+     *
+     * @return {@link  List<SpPullDownVo>} 下拉SP-vo-list
+     */
+    @Override
+    public List<SpPullDownVo> pullDownSp() {
+        String hql = "select new com.leon.adopen.admin.v2.sp.vo.SpPullDownVo(sp.id, sp.name) from Sp sp";
+        return jpaUtil.list(hql, new HashMap<>(16), SpPullDownVo.class);
     }
 
     /**
@@ -98,7 +111,7 @@ public class SpServiceImpl implements SpService {
      */
     private Sp spBuilder(RequestBase requestBase) {
         return Sp.builder()
-                .name(requestBase.getCpName())
+                .name(requestBase.getSpName())
                 .dockerName(requestBase.getDockerName())
                 .dockerPhone(requestBase.getDockerPhone())
                 .dockerEmail(requestBase.getDockerEmail())

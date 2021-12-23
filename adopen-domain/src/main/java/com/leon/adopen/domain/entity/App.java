@@ -50,10 +50,10 @@ public class App extends BaseIntIdEntity {
     @Column(columnDefinition = "tinyint(4) DEFAULT '1' COMMENT '链接类型(1:对接;2:短链)'")
     private Byte urlType;
 
-    @Column(columnDefinition = "varchar(50) DEFAULT '' COMMENT '预览链接'")
+    @Column(columnDefinition = "varchar(255) DEFAULT '' COMMENT '预览链接'")
     private String previewUrl;
 
-    @Column(columnDefinition = "varchar(50) DEFAULT '' COMMENT '上线链接'")
+    @Column(columnDefinition = "varchar(255) DEFAULT '' COMMENT '上线链接'")
     private String onlineUrl;
 
     @Column(columnDefinition = "tinyint(4) DEFAULT '1' COMMENT '返数格式(1:后台截图;2:表格截图)'")

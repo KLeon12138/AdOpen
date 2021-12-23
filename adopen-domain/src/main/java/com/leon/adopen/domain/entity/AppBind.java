@@ -52,7 +52,7 @@ public class AppBind extends BaseIntIdEntity {
     @Column(columnDefinition = "decimal(10,2) DEFAULT '0.00' COMMENT '下发单价'")
     private BigDecimal price;
 
-    @Column(columnDefinition = "varchar(50) DEFAULT '' COMMENT '渠道上线链接'")
+    @Column(columnDefinition = "varchar(255) DEFAULT '' COMMENT '渠道上线链接'")
     private String onlineUrl;
 
     @Column(columnDefinition = "tinyint(1) DEFAULT '0' COMMENT '上量状态(0:正常;1:停止)'")

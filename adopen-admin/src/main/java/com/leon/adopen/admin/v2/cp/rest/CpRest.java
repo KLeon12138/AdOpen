@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.leon.adopen.admin.common.request.RequestBase;
 import com.leon.adopen.admin.v2.cp.service.CpService;
 import com.leon.adopen.admin.v2.cp.vo.CpListVoPage;
+import com.leon.adopen.admin.v2.cp.vo.CpPullDownVo;
 import com.leon.adopen.common.constants.route.RouteConstants;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.vo.page.JsonPage;
@@ -14,6 +15,7 @@ import org.apache.poi.ss.formula.functions.T;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * cp-rest
@@ -30,7 +32,7 @@ public class CpRest {
     private CpService cpService;
 
     /**
-     * 渠道列表查询
+     * 渠道-列表
      *
      * @param requestBase 请求入参
      * @param page        分页信息
@@ -45,7 +47,7 @@ public class CpRest {
     }
 
     /**
-     * 渠道新增
+     * 渠道-新增
      *
      * @param requestBase 请求入参
      * @return {@link  ResResult}  同一返回结果集
@@ -57,5 +59,18 @@ public class CpRest {
         cpService.saveCp(requestBase);
         log.info("[CP 添加渠道] 响应; 添加成功");
         return ResCode.OK;
+    }
+
+    /**
+     * 渠道-下拉数据
+     *
+     * @return {@link  ResResult}  同一返回结果集
+     */
+    @PostMapping("/pulldown")
+    public ResResult pullDownCp() {
+        log.info("[CP 下拉数据] 请求");
+        List<CpPullDownVo> data = cpService.pullDownCp();
+        log.info("[CP 下拉数据] 响应 data -> {}", JSON.toJSONString(data));
+        return ResCode.OK.setData(data);
     }
 }

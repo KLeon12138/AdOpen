@@ -8,19 +8,14 @@ import com.leon.adopen.admin.v2.app.vo.AppBindListVoPage;
 import com.leon.adopen.common.constants.app.AppBindStatusConstants;
 import com.leon.adopen.common.constants.app.AppCodeConstants;
 import com.leon.adopen.common.constants.app.AppComConstants;
+import com.leon.adopen.common.constants.date.InitDateConstants;
 import com.leon.adopen.common.exception.code.ExCode;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.jpa.JpaUtil;
 import com.leon.adopen.common.utils.StringUtils;
 import com.leon.adopen.common.vo.page.JsonPage;
-import com.leon.adopen.domain.dao.AppBindDao;
-import com.leon.adopen.domain.dao.AppDao;
-import com.leon.adopen.domain.dao.CpDao;
-import com.leon.adopen.domain.dao.SpDao;
-import com.leon.adopen.domain.entity.App;
-import com.leon.adopen.domain.entity.AppBind;
-import com.leon.adopen.domain.entity.Cp;
-import com.leon.adopen.domain.entity.Sp;
+import com.leon.adopen.domain.dao.*;
+import com.leon.adopen.domain.entity.*;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -46,6 +41,11 @@ public class AppBindServiceImpl implements AppBindService {
     private SpDao spDao;
     @Resource
     private CpDao cpDao;
+    @Resource
+    private AppClickDao appClickDao;
+
+    private static final String KEY_APP_BIND = "AppBind";
+    private static final String KEY_APP_CLICK = "AppCLICK";
 
     /**
      * 产品绑定列表
@@ -58,12 +58,12 @@ public class AppBindServiceImpl implements AppBindService {
     public AppBindListVoPage listAppBind(AppBindListRequest request, JsonPage<T> page) {
         HashMap<String, Object> params = new HashMap<>(16);
         String hql = "select new com.leon.adopen.admin.v2.app.vo.AppBindListVo" +
-                "(ab.appId, ab.appCode, ab.appName, app.platform, app.type, ab.spId, ab.spName, sp.price, app.limitDay, app.urlType, " +
+                "(ab.appId, ab.appCode, ab.appName, app.platform, app.type, ab.spId, ab.spName, app.price, app.limitDay, app.urlType, " +
                 "app.previewUrl, app.onlineUrl, app.backFormat, app.book, app.demand, app.remark, ab.cpId, ab.cpName, ab.channelCode, ab.price, " +
                 "ab.onlineUrl, ab.isOnStatus) " +
                 "from AppBind ab " +
-                "left join App app on ab.appId = a.id " +
-                "left join Sp sp on ab.spId = s.id " +
+                "left join App app on ab.appId = app.id " +
+                "left join Sp sp on ab.spId = sp.id " +
                 "where ab.isdel <> 1";
         if (!StringUtils.isEmpty(request.getAppName())) {
             hql += " and ab.appName like :appName";
@@ -103,7 +103,9 @@ public class AppBindServiceImpl implements AppBindService {
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
     public void allot(AppBindAllotRequest request) throws AdopenException {
         this.verifyAppBindRequest(request);
-        appBindDao.save(this.appBindBuilder(request));
+        HashMap<String, Object> allBuilder = this.appBindAndClickBuilder(request);
+        appBindDao.save((AppBind) allBuilder.get(KEY_APP_BIND));
+        appClickDao.save((AppClick) allBuilder.get(KEY_APP_CLICK));
     }
 
     /**
@@ -134,18 +136,18 @@ public class AppBindServiceImpl implements AppBindService {
     }
 
     /**
-     * 绑定产品构造器
+     * 绑定产品及当日点击记录构造器
      *
      * @param request 产品绑定分配-request
      * @return {@link  AppBind}   绑定产品
      * @throws AdopenException 数据无效等异常
      */
-    private AppBind appBindBuilder(AppBindAllotRequest request) throws AdopenException {
+    private HashMap<String, Object> appBindAndClickBuilder(AppBindAllotRequest request) throws AdopenException {
         App app = appDao.findById(request.getAppId()).orElse(null);
         if (StringUtils.isEmpty(app)) {
             throw new AdopenException(ExCode.queryDataFailed, "无该产品;产品id:" + request.getAppId());
         }
-        Sp sp = spDao.findById(request.getSpId()).orElse(null);
+        Sp sp = spDao.findById(app.getSpId()).orElse(null);
         if (StringUtils.isEmpty(sp)) {
             throw new AdopenException(ExCode.queryDataFailed, "无该sp信息;sp id:" + request.getSpId());
         }
@@ -153,7 +155,11 @@ public class AppBindServiceImpl implements AppBindService {
         if (StringUtils.isEmpty(cp)) {
             throw new AdopenException(ExCode.queryDataFailed, "无该cp信息;cp id:" + request.getCpId());
         }
-        return AppBind.builder()
+        if (appClickDao.existsByChannelCodeAndClickDate(request.getChannelCode(), InitDateConstants.DATE_SHORT_TODAY)) {
+            throw new AdopenException(ExCode.repeatData, "今日已有该产品点击记录");
+        }
+        //构造产品分配记录
+        AppBind appBind = AppBind.builder()
                 .appId(app.getId())
                 .appCode(app.getAppCode())
                 .appName(app.getAppName())
@@ -165,6 +171,22 @@ public class AppBindServiceImpl implements AppBindService {
                 .price(request.getChannelPrice())
                 .onlineUrl(request.getChannelOnlineUrl())
                 .build();
+        //构造当日点击记录
+        AppClick appClick = AppClick.builder()
+                .appId(app.getId())
+                .appCode(app.getAppCode())
+                .appName(app.getAppName())
+                .spId(sp.getId())
+                .spName(sp.getName())
+                .cpId(cp.getId())
+                .cpName(cp.getName())
+                .channelCode(request.getChannelCode())
+                .limitDay(app.getLimitDay())
+                .clickDate(InitDateConstants.DATE_TODAY).build();
+        HashMap<String, Object> result = new HashMap<>(2);
+        result.put(KEY_APP_BIND, appBind);
+        result.put(KEY_APP_CLICK, appClick);
+        return result;
     }
 
     /**

@@ -1,8 +1,10 @@
 package com.leon.adopen.admin.v2.cp.service.impl;
+
 import com.leon.adopen.admin.common.request.RequestBase;
 import com.leon.adopen.admin.v2.cp.service.CpService;
 import com.leon.adopen.admin.v2.cp.vo.CpListVo;
 import com.leon.adopen.admin.v2.cp.vo.CpListVoPage;
+import com.leon.adopen.admin.v2.cp.vo.CpPullDownVo;
 import com.leon.adopen.common.exception.code.ExCode;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.jpa.JpaUtil;
@@ -13,8 +15,10 @@ import com.leon.adopen.domain.entity.Cp;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * cp-impl
@@ -40,7 +44,7 @@ public class CpServiceImpl implements CpService {
     public CpListVoPage listCp(RequestBase requestBase, JsonPage<T> page) {
         HashMap<String, Object> params = new HashMap<>(16);
         String hql = "select new com.leon.adopen.admin.v2.cp.vo.CpListVo" +
-                "(cp.id, cp.name, cp.dockerName, cp.dockerPhone, cp.dockerEmail, cp.dockerQq, cp.dockerWx, cp.dockerAddr, cp.businessMain) " +
+                "(cp.dockerName, cp.dockerPhone, cp.dockerEmail, cp.dockerQq, cp.dockerWx, cp.dockerAddr, cp.id, cp.name, cp.businessMain) " +
                 "from Cp cp where 1 = 1 ";
         if (!StringUtils.isEmpty(requestBase.getCpName())) {
             hql += " and cp.name like :cpName";
@@ -67,6 +71,17 @@ public class CpServiceImpl implements CpService {
     public void saveCp(RequestBase requestBase) throws AdopenException {
         this.verifyRequest(requestBase);
         cpDao.save(this.cpBuilder(requestBase));
+    }
+
+    /**
+     * 渠道下拉信息
+     *
+     * @return {@link  List<CpPullDownVo>} 下拉渠道-vo-list
+     */
+    @Override
+    public List<CpPullDownVo> pullDownCp() {
+        String hql = "select new com.leon.adopen.admin.v2.cp.vo.CpPullDownVo(cp.id, cp.name) from Cp cp";
+        return jpaUtil.list(hql, new HashMap<>(16), CpPullDownVo.class);
     }
 
     /**

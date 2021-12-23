@@ -1,10 +1,10 @@
 package com.leon.adopen.domain.manager;
 
-import com.leon.adopen.common.utils.StringUtils;
 import com.leon.adopen.domain.dao.AppDao;
 import com.leon.adopen.domain.entity.App;
 import com.leon.adopen.domain.exception.enums.AdopenDbCode;
 import com.leon.adopen.domain.exception.ex.AdopenDbException;
+import com.leon.adopen.domain.util.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -2,9 +2,12 @@ package com.leon.adopen.admin.v2.sp.service;
 
 import com.leon.adopen.admin.common.request.RequestBase;
 import com.leon.adopen.admin.v2.sp.vo.SpListVoPage;
+import com.leon.adopen.admin.v2.sp.vo.SpPullDownVo;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.vo.page.JsonPage;
 import org.apache.poi.ss.formula.functions.T;
+
+import java.util.List;
 
 /**
  * @author leon
@@ -27,4 +30,11 @@ public interface SpService {
      * @throws AdopenException 请求入参空异常或数据重复异常
      */
     void saveSp(RequestBase requestBase) throws AdopenException;
+
+    /**
+     * 下拉 SP 信息
+     *
+     * @return {@link  List<SpPullDownVo>} 下拉SP-vo-list
+     */
+    List<SpPullDownVo> pullDownSp();
 }
