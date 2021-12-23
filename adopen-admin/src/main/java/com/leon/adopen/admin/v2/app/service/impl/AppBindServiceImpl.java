@@ -155,8 +155,11 @@ public class AppBindServiceImpl implements AppBindService {
         if (StringUtils.isEmpty(cp)) {
             throw new AdopenException(ExCode.queryDataFailed, "无该cp信息;cp id:" + request.getCpId());
         }
-        if (appClickDao.existsByChannelCodeAndClickDate(request.getChannelCode(), InitDateConstants.DATE_SHORT_TODAY)) {
-            throw new AdopenException(ExCode.repeatData, "今日已有该产品点击记录");
+        if (appBindDao.existsByChannelCodeAndIsdel(request.getChannelCode(), AppComConstants.APP_BIND_NOT_DEL)) {
+            throw new AdopenException(ExCode.repeatData, "该渠道码已被占用,请重新分配;渠道码:" + request.getChannelCode());
+        }
+        if (appClickDao.existsByChannelCodeAndClickDate(request.getChannelCode(), InitDateConstants.DATE_TODAY)) {
+            throw new AdopenException(ExCode.repeatData, "今日已有该渠道码点击记录;渠道码:" + request.getChannelCode() + ", 点击日期:" + InitDateConstants.DATE_TODAY);
         }
         //构造产品分配记录
         AppBind appBind = AppBind.builder()
