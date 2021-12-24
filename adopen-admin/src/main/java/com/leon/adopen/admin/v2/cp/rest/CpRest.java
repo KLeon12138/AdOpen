@@ -66,7 +66,7 @@ public class CpRest {
      *
      * @return {@link  ResResult}  同一返回结果集
      */
-    @PostMapping("/pulldown")
+    @GetMapping("/pulldown")
     public ResResult pullDownCp() {
         log.info("[CP 下拉数据] 请求");
         List<CpPullDownVo> data = cpService.pullDownCp();
