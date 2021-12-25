@@ -7,4 +7,8 @@ package com.leon.adopen.common.constants.app;
 public class AppStUrlConstants {
     public static String URL_YDWX_A1;
     public static String URL_YDWX_A2;
+    public static String URL_SXZ_A1;
+    public static String URL_SXZ_A2;
+    public static String URL_SXZ_A3;
+    public static String URL_SXZ_A4;
 }

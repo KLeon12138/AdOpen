@@ -1,4 +1,4 @@
-package com.leon.adopen.dock.v2.app.service.impl;
+package com.leon.adopen.dock.v2.app.servicemark.impl;
 
 import com.leon.adopen.common.constants.app.AppCodeConstants;
 import com.leon.adopen.common.constants.app.AppStUrlConstants;
@@ -6,7 +6,7 @@ import com.leon.adopen.common.constants.app.AppUrlConstants;
 import com.leon.adopen.common.constants.date.InitDateConstants;
 import com.leon.adopen.common.utils.AppPortUtil;
 import com.leon.adopen.common.utils.LeonHttpUtil;
-import com.leon.adopen.dock.v2.app.service.ClickService;
+import com.leon.adopen.dock.v2.app.servicemark.ClickYdwxService;
 import com.leon.adopen.domain.exception.ex.AdopenDbException;
 import com.leon.adopen.domain.pojo.BaseInfo;
 import com.leon.adopen.domain.redis.AdopenCacheUtil;
@@ -22,13 +22,14 @@ import javax.annotation.Resource;
  */
 @Service
 @Slf4j
-public class ClickServiceImpl implements ClickService {
+public class ClickYdwxServiceImpl implements ClickYdwxService {
     @Resource
     private AdopenCacheUtil cacheUtil;
     @Resource
     private AppPortUtil appPortUtil;
 
-    private static final BaseInfo INFO = new BaseInfo();
+    private static final BaseInfo INFO_YDWX_A1 = new BaseInfo();
+    private static final BaseInfo INFO_YDWX_A2 = new BaseInfo();
 
     @Override
     @Async
@@ -39,12 +40,12 @@ public class ClickServiceImpl implements ClickService {
                     + "/1001/ck?loid=68-1290083041&idfa=" + idfa + "&ip=" + ip + "&sub1=&sub2=&sub3="
                     + "&callback=" + appPortUtil.back(channel, idfa, ip);
             this.run(AppCodeConstants.YDWX_A1, AppStUrlConstants.URL_YDWX_A1, channel);
-            INFO.setAppId(appid);
-            INFO.setChannel(channel);
-            INFO.setIdfa(idfa);
-            INFO.setIp(ip);
-            INFO.setCallback(callback);
-            cacheUtil.saveInfo(INFO);
+            INFO_YDWX_A1.setAppId(appid);
+            INFO_YDWX_A1.setChannel(channel);
+            INFO_YDWX_A1.setIdfa(idfa);
+            INFO_YDWX_A1.setIp(ip);
+            INFO_YDWX_A1.setCallback(callback);
+            cacheUtil.saveInfo(INFO_YDWX_A1);
         }
         //app:乐读文学A2  channel:1002
         if (appid.equals(AppCodeConstants.YDWX_A2)) {
@@ -52,12 +53,12 @@ public class ClickServiceImpl implements ClickService {
                     + "/1002/ck?loid=68-1290083041&idfa=" + idfa + "&ip=" + ip + "&sub1=&sub2=&sub3="
                     + "&callback=" + appPortUtil.back(channel, idfa, ip);
             this.run(AppCodeConstants.YDWX_A2, AppStUrlConstants.URL_YDWX_A2, channel);
-            INFO.setAppId(appid);
-            INFO.setChannel(channel);
-            INFO.setIdfa(idfa);
-            INFO.setIp(ip);
-            INFO.setCallback(callback);
-            cacheUtil.saveInfo(INFO);
+            INFO_YDWX_A2.setAppId(appid);
+            INFO_YDWX_A2.setChannel(channel);
+            INFO_YDWX_A2.setIdfa(idfa);
+            INFO_YDWX_A2.setIp(ip);
+            INFO_YDWX_A2.setCallback(callback);
+            cacheUtil.saveInfo(INFO_YDWX_A2);
         }
     }
 
@@ -71,6 +72,6 @@ public class ClickServiceImpl implements ClickService {
      */
     @Async
     void run(String appId, String requestUrl, String channel) throws AdopenDbException {
-        log.info("{} -> request -> [{}], response -> [{}], channel -> [{}], click -> [{}]", appId, requestUrl, LeonHttpUtil.get(requestUrl, appId, channel), channel, cacheUtil.incr(channel, InitDateConstants.DATE_SHORT_TODAY));
+        log.info("ydwx:{} -> request -> [{}], response -> [{}], channel -> [{}], click -> [{}]", appId, requestUrl, LeonHttpUtil.get(requestUrl, appId, channel), channel, cacheUtil.incr(channel, InitDateConstants.DATE_SHORT_TODAY));
     }
 }

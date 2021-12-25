@@ -44,6 +44,15 @@ public interface AppBindDao extends JpaRepository<AppBind, Integer> {
     void updateAppBindStatusByChannelCode(@Param(value = "channelCode") String channelCode, @Param(value = "isOn") Boolean isOn);
 
     /**
+     * 检验产品是否被分配
+     *
+     * @param appId 产品id
+     * @param isDel 删除状态
+     * @return {@link  Boolean}    是否存在
+     */
+    Boolean existsByAppIdAndIsdel(Integer appId, Boolean isDel);
+
+    /**
      * 检验渠道码是否被分配
      *
      * @param channelCode 渠道码

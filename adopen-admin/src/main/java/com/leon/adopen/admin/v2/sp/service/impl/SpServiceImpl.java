@@ -118,6 +118,6 @@ public class SpServiceImpl implements SpService {
                 .dockerQq(requestBase.getDockerQq())
                 .dockerWx(requestBase.getDockerWx())
                 .dockerAddr(requestBase.getDockerAddr())
-                .needMain(requestBase.getBusinessMain()).build();
+                .needMain(requestBase.getNeedMain()).build();
     }
 }

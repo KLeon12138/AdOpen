@@ -3,9 +3,12 @@ package com.leon.adopen.admin.v2.app.service;
 import com.leon.adopen.admin.v2.app.request.AppListRequest;
 import com.leon.adopen.admin.v2.app.request.AppSaveRequest;
 import com.leon.adopen.admin.v2.app.vo.AppListVoPage;
+import com.leon.adopen.admin.v2.app.vo.AppPullDownVo;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.vo.page.JsonPage;
 import org.apache.poi.ss.formula.functions.T;
+
+import java.util.List;
 
 /**
  * app-service
@@ -30,4 +33,11 @@ public interface AppService {
      * @throws AdopenException 入参请求异常或数据重复异常
      */
     void saveApp(AppSaveRequest request) throws AdopenException;
+
+    /**
+     * 产品下拉数据
+     *
+     * @return {@link  List<AppPullDownVo>}    产品下拉数据
+     */
+    List<AppPullDownVo> pullDownApp();
 }

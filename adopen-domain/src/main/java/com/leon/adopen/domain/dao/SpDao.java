@@ -17,4 +17,12 @@ public interface SpDao extends JpaRepository<Sp, Integer> {
      * @return {@link   Boolean}   是否存在
      */
     Boolean existsByName(String spName);
+
+    /**
+     * 根据上游id查重
+     *
+     * @param spId 上游id
+     * @return {@link   Boolean}   是否存在
+     */
+    Boolean existsById(String spId);
 }

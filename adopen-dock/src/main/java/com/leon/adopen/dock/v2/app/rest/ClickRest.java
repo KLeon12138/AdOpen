@@ -1,7 +1,7 @@
 package com.leon.adopen.dock.v2.app.rest;
 
 import com.leon.adopen.common.constants.dock.ClickConstants;
-import com.leon.adopen.dock.v2.app.service.ClickService;
+import com.leon.adopen.dock.v2.app.servicemark.ClickYdwxService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 @Slf4j
 public class ClickRest {
     @Resource
-    private ClickService clickService;
+    private ClickYdwxService ydwxService;
 
 
     /**
@@ -36,7 +36,7 @@ public class ClickRest {
      */
     @GetMapping("/click")
     public String click(@RequestParam String appid, @RequestParam String idfa, @RequestParam String ip, @RequestParam String channel, @RequestParam String callback) throws Exception {
-        clickService.click(appid, idfa, ip, channel,callback);
+        ydwxService.click(appid, idfa, ip, channel,callback);
         return ClickConstants.DEFAULT_RESULT;
     }
 }

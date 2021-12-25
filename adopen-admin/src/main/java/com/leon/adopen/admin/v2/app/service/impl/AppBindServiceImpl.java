@@ -65,13 +65,13 @@ public class AppBindServiceImpl implements AppBindService {
                 "left join App app on ab.appId = app.id " +
                 "left join Sp sp on ab.spId = sp.id " +
                 "where ab.isdel <> 1";
-        if (!StringUtils.isEmpty(request.getAppName())) {
-            hql += " and ab.appName like :appName";
-            params.put("appName", "%" + request.getAppName() + "%");
-        }
         if (!StringUtils.isEmpty(request.getAppCode())) {
             hql += " and ab.appCode like :appCode";
             params.put("appCode", "%" + request.getAppCode() + "%");
+        }
+        if (!StringUtils.isEmpty(request.getAppName())) {
+            hql += " and ab.appName like :appName";
+            params.put("appName", "%" + request.getAppName() + "%");
         }
         if (!StringUtils.isEmpty(request.getSpName())) {
             hql += " and ab.spName like :spName";
@@ -117,6 +117,9 @@ public class AppBindServiceImpl implements AppBindService {
     private void verifyAppBindRequest(AppBindAllotRequest request) throws AdopenException {
         if (StringUtils.isEmpty(request.getAppId())) {
             throw new AdopenException(ExCode.lackArgument, "缺省产品id");
+        }
+        if (appBindDao.existsByAppIdAndIsdel(request.getAppId(), AppComConstants.APP_BIND_NOT_DEL)) {
+            throw new AdopenException(ExCode.repeatData, "该产品已被分配,请重新配置;产品id:" + request.getAppId());
         }
         if (StringUtils.isEmpty(request.getCpId())) {
             throw new AdopenException(ExCode.lackArgument, "缺省渠道id");

@@ -103,4 +103,9 @@ public class BaseApp {
         this.demand = demand;
         this.remark = remark;
     }
+
+    public BaseApp(Integer appId, String appName) {
+        this.appId = appId;
+        this.appName = appName;
+    }
 }

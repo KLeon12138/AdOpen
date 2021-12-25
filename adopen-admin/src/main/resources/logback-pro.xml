@@ -43,6 +43,20 @@
         </layout>
     </appender>
 
+    <appender name="APP"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>
+                /data/logs/adopen/admin/app.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>2</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger [%file:%line] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
     <logger name="com.leon.adopen.admin.v2.sp" level="INFO"
             additivity="false">
         <appender-ref ref="SP"/>
@@ -51,6 +65,11 @@
     <logger name="com.leon.adopen.admin.v2.cp" level="INFO"
             additivity="false">
         <appender-ref ref="CP"/>
+    </logger>
+
+    <logger name="com.leon.adopen.admin.v2.app" level="INFO"
+            additivity="false">
+        <appender-ref ref="APP"/>
     </logger>
 
     <root level="INFO">

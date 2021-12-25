@@ -5,19 +5,23 @@ import com.leon.adopen.admin.v2.app.request.AppSaveRequest;
 import com.leon.adopen.admin.v2.app.service.AppService;
 import com.leon.adopen.admin.v2.app.vo.AppListVo;
 import com.leon.adopen.admin.v2.app.vo.AppListVoPage;
+import com.leon.adopen.admin.v2.app.vo.AppPullDownVo;
 import com.leon.adopen.common.exception.code.ExCode;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.jpa.JpaUtil;
 import com.leon.adopen.common.utils.StringUtils;
 import com.leon.adopen.common.vo.page.JsonPage;
 import com.leon.adopen.domain.dao.AppDao;
+import com.leon.adopen.domain.dao.SpDao;
 import com.leon.adopen.domain.entity.App;
+import com.leon.adopen.domain.entity.Sp;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * app-impl
@@ -31,6 +35,8 @@ public class AppServiceImpl implements AppService {
     private JpaUtil jpaUtil;
     @Resource
     private AppDao appDao;
+    @Resource
+    private SpDao spDao;
 
     /**
      * 产品列表
@@ -78,6 +84,17 @@ public class AppServiceImpl implements AppService {
     }
 
     /**
+     * 产品下拉数据
+     *
+     * @return {@link  List<AppPullDownVo>}    产品下拉数据
+     */
+    @Override
+    public List<AppPullDownVo> pullDownApp() {
+        String hql = "select new com.leon.adopen.admin.v2.app.vo.AppPullDownVo(app.id, app.appName) from App app";
+        return jpaUtil.list(hql, new HashMap<>(16), AppPullDownVo.class);
+    }
+
+    /**
      * 校验产品新增请求数据
      *
      * @param request 产品新增请求数据
@@ -102,8 +119,8 @@ public class AppServiceImpl implements AppService {
         if (StringUtils.isEmpty(request.getSpId())) {
             throw new AdopenException(ExCode.lackArgument, "缺省上游id");
         }
-        if (StringUtils.isEmpty(request.getSpName())) {
-            throw new AdopenException(ExCode.lackArgument, "缺省上游名称");
+        if (!spDao.existsById(request.getSpId())) {
+            throw new AdopenException(ExCode.queryDataFailed, "无该SP-ID;spId:" + request.getSpId());
         }
         if (StringUtils.isEmpty(request.getPrice())) {
             throw new AdopenException(ExCode.lackArgument, "缺省产品单价");
@@ -137,14 +154,18 @@ public class AppServiceImpl implements AppService {
      * @param request 产品新增请求数据
      * @return {@link  App}    产品信息
      */
-    private App appBuilder(AppSaveRequest request) {
+    private App appBuilder(AppSaveRequest request) throws AdopenException {
+        Sp sp = spDao.findById(request.getSpId()).orElse(null);
+        if (StringUtils.isEmpty(sp)) {
+            throw new AdopenException(ExCode.queryDataFailed, "无该SP信息;spId:" + request.getSpId());
+        }
         return App.builder()
                 .appCode(request.getAppCode())
                 .appName(request.getAppName())
                 .platform(request.getPlatform())
                 .type(request.getType())
                 .spId(request.getSpId())
-                .spName(request.getSpName())
+                .spName(sp.getName())
                 .price(request.getPrice())
                 .limitDay(request.getLimitDay())
                 .urlType(request.getUrlType())

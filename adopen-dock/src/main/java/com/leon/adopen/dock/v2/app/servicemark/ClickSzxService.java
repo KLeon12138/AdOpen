@@ -1,12 +1,12 @@
-package com.leon.adopen.dock.v2.app.service;
+package com.leon.adopen.dock.v2.app.servicemark;
 
 import org.springframework.scheduling.annotation.Async;
 
 /**
  * @author leon
- * @date 2021-11-29 16:53
+ * @date 2021-12-24 12:44
  */
-public interface ClickService {
+public interface ClickSzxService {
     /**
      * 点击上报
      *

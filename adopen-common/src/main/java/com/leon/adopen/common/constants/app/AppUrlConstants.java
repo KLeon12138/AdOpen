@@ -13,4 +13,8 @@ public class AppUrlConstants {
      * 乐读文学
      */
     public static final String URL_YDWX = "http://cp.of.bookld.com/dsp";
+    /**
+     * 神州行
+     */
+    public static final String URL_SZX = "https://report.paojiao.cn/ad/click?";
 }

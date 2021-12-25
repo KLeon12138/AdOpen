@@ -57,7 +57,7 @@
         </layout>
     </appender>
 
-    <logger name="com.leon.adopen.dock.v2.app.service.impl.ClickServiceImpl" level="INFO"
+    <logger name="com.leon.adopen.dock.v2.app.servicemark" level="INFO"
             additivity="false">
         <appender-ref ref="CLICK"/>
     </logger>

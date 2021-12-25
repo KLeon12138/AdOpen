@@ -1,9 +1,11 @@
 package com.leon.adopen.admin.v2.app.rest;
+
 import com.alibaba.fastjson.JSON;
 import com.leon.adopen.admin.v2.app.request.AppListRequest;
 import com.leon.adopen.admin.v2.app.request.AppSaveRequest;
 import com.leon.adopen.admin.v2.app.service.AppService;
 import com.leon.adopen.admin.v2.app.vo.AppListVoPage;
+import com.leon.adopen.admin.v2.app.vo.AppPullDownVo;
 import com.leon.adopen.common.constants.route.RouteConstants;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.vo.page.JsonPage;
@@ -12,7 +14,9 @@ import com.leon.adopen.common.vo.result.ResResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * app-rest
@@ -56,5 +60,18 @@ public class AppRest {
         appService.saveApp(request);
         log.info("[app 新增] 响应; 新增完成");
         return ResCode.OK;
+    }
+
+    /**
+     * APP-下拉数据
+     *
+     * @return {@link  ResResult}  同一返回结果集
+     */
+    @GetMapping("/pulldown")
+    public ResResult pullDownCp() {
+        log.info("[APP 下拉数据] 请求");
+        List<AppPullDownVo> data = appService.pullDownApp();
+        log.info("[APP 下拉数据] 响应 data -> {}", JSON.toJSONString(data));
+        return ResCode.OK.setData(data);
     }
 }

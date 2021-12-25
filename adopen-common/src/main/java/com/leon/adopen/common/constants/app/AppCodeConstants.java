@@ -13,4 +13,20 @@ public class AppCodeConstants {
      * 乐读文学-A2  1002
      */
     public static final String YDWX_A2 = "ydwxA2";
+    /**
+     * 神州行-A1  1101
+     */
+    public static final String SZX_A1 = "szxA1";
+    /**
+     * 神州行-A2  1102
+     */
+    public static final String SZX_A2 = "szxA2";
+    /**
+     * 神州行-A3  1103
+     */
+    public static final String SZX_A3 = "szxA3";
+    /**
+     * 神州行-A4  1104
+     */
+    public static final String SZX_A4 = "szxA4";
 }
