@@ -1,4 +1,4 @@
-package com.leon.adopen.dock.v2.task.service;
+package com.leon.adopen.task.click.service;
 
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.domain.entity.AppClick;

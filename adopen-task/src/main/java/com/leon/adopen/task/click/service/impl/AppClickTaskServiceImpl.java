@@ -1,4 +1,4 @@
-package com.leon.adopen.dock.v2.task.service.impl;
+package com.leon.adopen.task.click.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.leon.adopen.common.constants.app.AppComConstants;
@@ -8,13 +8,13 @@ import com.leon.adopen.common.constants.symbol.SymbolConstants;
 import com.leon.adopen.common.exception.code.ExCode;
 import com.leon.adopen.common.exception.example.AdopenException;
 import com.leon.adopen.common.utils.StringUtils;
-import com.leon.adopen.dock.v2.task.service.AppClickTaskService;
 import com.leon.adopen.domain.dao.*;
 import com.leon.adopen.domain.entity.*;
 import com.leon.adopen.domain.exception.ex.AdopenDbException;
 import com.leon.adopen.domain.redis.AdopenCacheConstants;
 import com.leon.adopen.domain.redis.AdopenCacheUtil;
 import com.leon.adopen.domain.util.DateUtils;
+import com.leon.adopen.task.click.service.AppClickTaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -71,7 +71,7 @@ public class AppClickTaskServiceImpl implements AppClickTaskService {
             }
             AppClick appClick = appClickDao.findByChannelCodeAndClickDate(splitString.get(NumberConstants.INDEX_THREE), InitDateConstants.DATE_TODAY);
             if (StringUtils.isEmpty(appClick)) {
-                log.error("[该缓存无对应数据], data:[{}]", JSON.toJSONString(appClick));
+                log.error("[该缓存无对应数据], data:[{}], key -> {}", JSON.toJSONString(appClick), key);
                 continue;
             }
             Integer clickCount = Integer.parseInt(adopenCacheUtil.getData(key));
