@@ -108,4 +108,12 @@ public class BaseApp {
         this.appId = appId;
         this.appName = appName;
     }
+
+    public BaseApp(Integer appId, String appCode, String appName, String spName, Integer limitDay) {
+        this.appId = appId;
+        this.appCode = appCode;
+        this.appName = appName;
+        this.spName = spName;
+        this.limitDay = limitDay;
+    }
 }

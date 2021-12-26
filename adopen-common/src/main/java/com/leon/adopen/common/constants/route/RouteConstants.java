@@ -11,10 +11,11 @@ public class RouteConstants {
 
 
     public static final String ADMIN_PORT_APP = PROJECT_ADMIN + VERSION_V2 + "/app";
-    public static final String ADMIN_PORT_APP_BIND = PROJECT_ADMIN + VERSION_V2 + "/app/bind";
+    public static final String ADMIN_PORT_APP_BIND = ADMIN_PORT_APP + "/bind";
+    public static final String ADMIN_PORT_APP_LIMIT = ADMIN_PORT_APP + "/limit";
+    public static final String ADMIN_PORT_APP_CLICK = ADMIN_PORT_APP + "/click";
     public static final String ADMIN_PORT_SP = PROJECT_ADMIN + VERSION_V2 + "/sp";
     public static final String ADMIN_PORT_CP = PROJECT_ADMIN + VERSION_V2 + "/cp";
-    public static final String ADMIN_PORT_APP_LIMIT = PROJECT_ADMIN + VERSION_V2 + "/app/limit";
 
     public static final String DOCK_PORT_CLICK = PROJECT_DOCK + VERSION_V2 + "/click";
     public static final String DOCK_PORT_BACK = PROJECT_DOCK + VERSION_V2 + "/back";
