@@ -17,4 +17,12 @@ public class AppUrlConstants {
      * 神州行
      */
     public static final String URL_SZX = "https://report.paojiao.cn/ad/click?";
+    /**
+     * 啪啪三国
+     */
+    public static final String URL_PPSG = "https://uri6.com/tkio";
+    /**
+     *  樊登读书
+     */
+    public static final String URL_FDDS = "http://uri6.com/tkio";
 }

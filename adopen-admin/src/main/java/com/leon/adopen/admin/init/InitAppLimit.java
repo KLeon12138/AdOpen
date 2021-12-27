@@ -21,6 +21,9 @@ public class InitAppLimit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        AppLimitConstants.LIMIT_YDWX_A1 = appManager.limitForApp(AppCodeConstants.YDWX_A1);
+        AppLimitConstants.LIMIT_PPSG_A1 = appManager.limitForApp(AppCodeConstants.PPSG_A1);
+        AppLimitConstants.LIMIT_PPSG_A2 = appManager.limitForApp(AppCodeConstants.PPSG_A2);
+        AppLimitConstants.LIMIT_FDDS_A1 = appManager.limitForApp(AppCodeConstants.FDDS_A1);
+        AppLimitConstants.LIMIT_FDDS_A2 = appManager.limitForApp(AppCodeConstants.FDDS_A2);
     }
 }

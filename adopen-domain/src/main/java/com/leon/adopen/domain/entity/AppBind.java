@@ -55,7 +55,7 @@ public class AppBind extends BaseIntIdEntity {
     @Column(columnDefinition = "varchar(255) DEFAULT '' COMMENT '渠道上线链接'")
     private String onlineUrl;
 
-    @Column(columnDefinition = "tinyint(1) DEFAULT '0' COMMENT '上量状态(0:正常;1:停止)'")
+    @Column(columnDefinition = "tinyint(1) DEFAULT '1' COMMENT '上量状态(0:停止;1:正常)'")
     private Boolean isOnStatus;
 
     @Column(columnDefinition = "tinyint(1) DEFAULT '1' COMMENT '删除状态(0:未删除;1:已删除);删除状态即该产品不再需要该渠道投放'")

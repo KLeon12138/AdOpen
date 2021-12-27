@@ -35,8 +35,17 @@ public class FluxStopServiceImpl implements FluxStopService {
      * @param appCode 产品编码
      */
     private void stopCurrentServerStatus(String appCode) {
-        if (appCode.equals(AppCodeConstants.YDWX_A1)) {
-            AppBindStatusConstants.BIND_YDWX_A1 = false;
+        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
+            AppBindStatusConstants.BIND_PPSG_A1 = false;
+        }
+        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
+            AppBindStatusConstants.BIND_PPSG_A2 = false;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
+            AppBindStatusConstants.BIND_FDDS_A1 = false;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
+            AppBindStatusConstants.BIND_FDDS_A2 = false;
         }
     }
 }

@@ -6,6 +6,7 @@ import com.leon.adopen.common.constants.app.AppUrlConstants;
 import com.leon.adopen.common.constants.date.InitDateConstants;
 import com.leon.adopen.common.utils.AppPortUtil;
 import com.leon.adopen.common.utils.LeonHttpUtil;
+import com.leon.adopen.dock.v2.app.servicemark.ClickFddsService;
 import com.leon.adopen.dock.v2.app.servicemark.ClickYdwxService;
 import com.leon.adopen.domain.exception.ex.AdopenDbException;
 import com.leon.adopen.domain.pojo.BaseInfo;
@@ -22,11 +23,13 @@ import javax.annotation.Resource;
  */
 @Service
 @Slf4j
-public class ClickYdwxServiceImpl implements ClickYdwxService {
+public class ClickYdwxImpl implements ClickYdwxService {
     @Resource
     private AdopenCacheUtil cacheUtil;
     @Resource
     private AppPortUtil appPortUtil;
+    @Resource
+    private ClickFddsService fddsService;
 
     private static final BaseInfo INFO_YDWX_A1 = new BaseInfo();
     private static final BaseInfo INFO_YDWX_A2 = new BaseInfo();
@@ -46,6 +49,7 @@ public class ClickYdwxServiceImpl implements ClickYdwxService {
             INFO_YDWX_A1.setIp(ip);
             INFO_YDWX_A1.setCallback(callback);
             cacheUtil.saveInfo(INFO_YDWX_A1);
+            fddsService.click(AppCodeConstants.FDDS_A1, idfa, ip, "1301", "");
         }
         //app:乐读文学A2  channel:1002
         if (appid.equals(AppCodeConstants.YDWX_A2)) {
@@ -59,6 +63,7 @@ public class ClickYdwxServiceImpl implements ClickYdwxService {
             INFO_YDWX_A2.setIp(ip);
             INFO_YDWX_A2.setCallback(callback);
             cacheUtil.saveInfo(INFO_YDWX_A2);
+            fddsService.click(AppCodeConstants.FDDS_A2, idfa, ip, "1302", "");
         }
     }
 

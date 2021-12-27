@@ -204,9 +204,21 @@ public class AppBindServiceImpl implements AppBindService {
      */
     @Override
     public Boolean updateIsOn(String appCode, Boolean isOn) {
-        if (appCode.equals(AppCodeConstants.YDWX_A1)) {
-            AppBindStatusConstants.BIND_YDWX_A1 = isOn;
-            return AppBindStatusConstants.BIND_YDWX_A1;
+        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
+            AppBindStatusConstants.BIND_PPSG_A1 = isOn;
+            return AppBindStatusConstants.BIND_PPSG_A1;
+        }
+        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
+            AppBindStatusConstants.BIND_PPSG_A2 = isOn;
+            return AppBindStatusConstants.BIND_PPSG_A2;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
+            AppBindStatusConstants.BIND_FDDS_A1 = isOn;
+            return AppBindStatusConstants.BIND_FDDS_A1;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
+            AppBindStatusConstants.BIND_FDDS_A2 = isOn;
+            return AppBindStatusConstants.BIND_FDDS_A2;
         }
         return AppBindStatusConstants.DEFAULT_APP_BIND_STATUS;
     }

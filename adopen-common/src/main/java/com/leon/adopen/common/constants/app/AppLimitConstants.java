@@ -8,5 +8,8 @@ package com.leon.adopen.common.constants.app;
  */
 public class AppLimitConstants {
     public static final Integer DEFAULT_APP_LIMIT = 0;
-    public static Integer LIMIT_YDWX_A1;
+    public static Integer LIMIT_PPSG_A1;
+    public static Integer LIMIT_PPSG_A2;
+    public static Integer LIMIT_FDDS_A1;
+    public static Integer LIMIT_FDDS_A2;
 }

@@ -26,8 +26,17 @@ public class InitAppBindStatus implements CommandLineRunner {
     public void run(String... args) {
         List<AppBind> appBindList = appBindDao.findAllByIsdel(AppComConstants.APP_BIND_NOT_DEL);
         for (AppBind bind : appBindList) {
-            if (bind.getAppCode().equals(AppCodeConstants.YDWX_A1)) {
-                AppBindStatusConstants.BIND_YDWX_A1 = bind.getIsOnStatus();
+            if (bind.getAppCode().equals(AppCodeConstants.PPSG_A1)) {
+                AppBindStatusConstants.BIND_PPSG_A1 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConstants.PPSG_A2)) {
+                AppBindStatusConstants.BIND_PPSG_A2 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConstants.FDDS_A1)) {
+                AppBindStatusConstants.BIND_FDDS_A1 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConstants.FDDS_A2)) {
+                AppBindStatusConstants.BIND_FDDS_A2 = bind.getIsOnStatus();
             }
         }
     }

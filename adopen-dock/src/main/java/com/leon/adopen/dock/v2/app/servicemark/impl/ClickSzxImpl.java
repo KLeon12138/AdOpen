@@ -6,6 +6,7 @@ import com.leon.adopen.common.constants.app.AppUrlConstants;
 import com.leon.adopen.common.constants.date.InitDateConstants;
 import com.leon.adopen.common.utils.AppPortUtil;
 import com.leon.adopen.common.utils.LeonHttpUtil;
+import com.leon.adopen.dock.v2.app.servicemark.ClickPpsgService;
 import com.leon.adopen.dock.v2.app.servicemark.ClickSzxService;
 import com.leon.adopen.domain.exception.ex.AdopenDbException;
 import com.leon.adopen.domain.pojo.BaseInfo;
@@ -22,11 +23,13 @@ import javax.annotation.Resource;
  */
 @Service
 @Slf4j
-public class ClickSzxServiceImpl implements ClickSzxService {
+public class ClickSzxImpl implements ClickSzxService {
     @Resource
     private AdopenCacheUtil cacheUtil;
     @Resource
     private AppPortUtil appPortUtil;
+    @Resource
+    private ClickPpsgService ppsgService;
 
     private static final BaseInfo INFO_SZX_A1 = new BaseInfo();
     private static final BaseInfo INFO_SZX_A2 = new BaseInfo();
@@ -74,6 +77,7 @@ public class ClickSzxServiceImpl implements ClickSzxService {
             INFO_SZX_A3.setIp(ip);
             INFO_SZX_A3.setCallback(callback);
             cacheUtil.saveInfo(INFO_SZX_A3);
+            ppsgService.click(AppCodeConstants.PPSG_A1, idfa, ip, "1201", "");
         }
         //app:神州行-A4  channel:1104
         if (appid.equals(AppCodeConstants.SZX_A4)) {
@@ -87,6 +91,7 @@ public class ClickSzxServiceImpl implements ClickSzxService {
             INFO_SZX_A4.setIp(ip);
             INFO_SZX_A4.setCallback(callback);
             cacheUtil.saveInfo(INFO_SZX_A4);
+            ppsgService.click(AppCodeConstants.PPSG_A2, idfa, ip, "1202", "");
         }
     }
 

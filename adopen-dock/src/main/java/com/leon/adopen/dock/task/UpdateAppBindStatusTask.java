@@ -32,8 +32,17 @@ public class UpdateAppBindStatusTask {
         for (AppBind bind : appBindList) {
             appBindDao.updateAppBindStatusByChannelCode(bind.getChannelCode(), AppComConstants.APP_BIND_STATUS_ON);
             appCodeList.add(bind.getAppCode());
-            if (appCodeList.contains(AppCodeConstants.YDWX_A1)) {
-                AppBindStatusConstants.BIND_YDWX_A1 = true;
+            if (appCodeList.contains(AppCodeConstants.PPSG_A1)) {
+                AppBindStatusConstants.BIND_PPSG_A1 = true;
+            }
+            if (appCodeList.contains(AppCodeConstants.PPSG_A2)) {
+                AppBindStatusConstants.BIND_PPSG_A2 = true;
+            }
+            if (appCodeList.contains(AppCodeConstants.FDDS_A1)) {
+                AppBindStatusConstants.BIND_FDDS_A1 = true;
+            }
+            if (appCodeList.contains(AppCodeConstants.FDDS_A2)) {
+                AppBindStatusConstants.BIND_FDDS_A2 = true;
             }
         }
     }

@@ -45,8 +45,17 @@ public class CheckAppUtils {
      * @return {@link  Integer}    产品限量
      */
     private Integer checkLimit(String appCode) {
-        if (appCode.equals(AppCodeConstants.YDWX_A1)) {
-            return AppLimitConstants.LIMIT_YDWX_A1;
+        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
+            return AppLimitConstants.LIMIT_PPSG_A1;
+        }
+        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
+            return AppLimitConstants.LIMIT_PPSG_A2;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
+            return AppLimitConstants.LIMIT_FDDS_A1;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
+            return AppLimitConstants.LIMIT_FDDS_A2;
         }
         return AppLimitConstants.DEFAULT_APP_LIMIT;
     }
@@ -58,8 +67,17 @@ public class CheckAppUtils {
      * @return 产品绑定上线状态
      */
     public Boolean checkAppBindIsOn(String appCode) {
-        if (appCode.equals(AppCodeConstants.YDWX_A1)) {
-            return AppBindStatusConstants.BIND_YDWX_A1;
+        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
+            return AppBindStatusConstants.BIND_PPSG_A1;
+        }
+        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
+            return AppBindStatusConstants.BIND_PPSG_A2;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
+            return AppBindStatusConstants.BIND_FDDS_A1;
+        }
+        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
+            return AppBindStatusConstants.BIND_FDDS_A2;
         }
         return AppComConstants.APP_BIND_STATUS_DOWN;
     }

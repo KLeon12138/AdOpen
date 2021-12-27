@@ -8,5 +8,8 @@ package com.leon.adopen.common.constants.app;
  */
 public class AppBindStatusConstants {
     public static final Boolean DEFAULT_APP_BIND_STATUS = false;
-    public static Boolean BIND_YDWX_A1 = false;
+    public static Boolean BIND_PPSG_A1 = false;
+    public static Boolean BIND_PPSG_A2 = false;
+    public static Boolean BIND_FDDS_A1 = false;
+    public static Boolean BIND_FDDS_A2 = false;
 }
