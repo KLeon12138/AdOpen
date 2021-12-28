@@ -44,7 +44,7 @@ public class ClickNewRest {
     }
 
     /**
-     * 上报乐读文学
+     * 上报神州行
      *
      * @param appid   产品 id
      * @param idfa    idfa 标识
