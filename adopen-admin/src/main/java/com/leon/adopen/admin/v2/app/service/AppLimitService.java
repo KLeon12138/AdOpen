@@ -14,5 +14,5 @@ public interface AppLimitService {
      * @param limit   限量
      * @return {@link  Integer}    修改后限量
      */
-    Integer updateLimit(String appCode, Integer limit);
+    Long updateLimit(String appCode, Long limit);
 }

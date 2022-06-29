@@ -8,4 +8,6 @@ import com.leon.adopen.domain.exception.ex.AdopenDbException;
  */
 public interface BackService {
     Object backToLeon(String appid, String idfa, String ip) throws AdopenDbException;
+
+    Object backToMe(String appid, String idfa, String ip) throws AdopenDbException;
 }

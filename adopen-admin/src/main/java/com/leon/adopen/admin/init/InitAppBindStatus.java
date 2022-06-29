@@ -1,8 +1,8 @@
 package com.leon.adopen.admin.init;
 
-import com.leon.adopen.common.constants.app.AppBindStatusConstants;
-import com.leon.adopen.common.constants.app.AppCodeConstants;
-import com.leon.adopen.common.constants.app.AppComConstants;
+import com.leon.adopen.common.constants.app.AppBindStatusConst;
+import com.leon.adopen.common.constants.app.AppCodeConst;
+import com.leon.adopen.common.constants.app.AppComConst;
 import com.leon.adopen.domain.dao.AppBindDao;
 import com.leon.adopen.domain.entity.AppBind;
 import lombok.extern.slf4j.Slf4j;
@@ -24,19 +24,37 @@ public class InitAppBindStatus implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        List<AppBind> appBindList = appBindDao.findAllByIsdel(AppComConstants.APP_BIND_NOT_DEL);
+        List<AppBind> appBindList = appBindDao.findAllByIsdel(AppComConst.APP_BIND_NOT_DEL);
         for (AppBind bind : appBindList) {
-            if (bind.getAppCode().equals(AppCodeConstants.PPSG_A1)) {
-                AppBindStatusConstants.BIND_PPSG_A1 = bind.getIsOnStatus();
+            if (bind.getAppCode().equals(AppCodeConst.DTS_A1)) {
+                AppBindStatusConst.BIND_DTS_A1 = bind.getIsOnStatus();
             }
-            if (bind.getAppCode().equals(AppCodeConstants.PPSG_A2)) {
-                AppBindStatusConstants.BIND_PPSG_A2 = bind.getIsOnStatus();
+            if (bind.getAppCode().equals(AppCodeConst.DTS_A2)) {
+                AppBindStatusConst.BIND_DTS_A2 = bind.getIsOnStatus();
             }
-            if (bind.getAppCode().equals(AppCodeConstants.FDDS_A1)) {
-                AppBindStatusConstants.BIND_FDDS_A1 = bind.getIsOnStatus();
+            if (bind.getAppCode().equals(AppCodeConst.DTS_A3)) {
+                AppBindStatusConst.BIND_DTS_A3 = bind.getIsOnStatus();
             }
-            if (bind.getAppCode().equals(AppCodeConstants.FDDS_A2)) {
-                AppBindStatusConstants.BIND_FDDS_A2 = bind.getIsOnStatus();
+            if (bind.getAppCode().equals(AppCodeConst.DTS_A4)) {
+                AppBindStatusConst.BIND_DTS_A4 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConst.DTS_A5)) {
+                AppBindStatusConst.BIND_DTS_A5 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConst.DZG_A1)) {
+                AppBindStatusConst.BIND_DZG_A1 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConst.DZG_A2)) {
+                AppBindStatusConst.BIND_DZG_A2 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConst.DZG_A3)) {
+                AppBindStatusConst.BIND_DZG_A3 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConst.DZG_A4)) {
+                AppBindStatusConst.BIND_DZG_A4 = bind.getIsOnStatus();
+            }
+            if (bind.getAppCode().equals(AppCodeConst.DZG_A5)) {
+                AppBindStatusConst.BIND_DZG_A5 = bind.getIsOnStatus();
             }
         }
     }

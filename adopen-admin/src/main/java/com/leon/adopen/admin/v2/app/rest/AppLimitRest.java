@@ -32,9 +32,9 @@ public class AppLimitRest {
      */
     @RequestMapping(value = "/update/{appCode}")
     @ResponseBody
-    public ResResult updateAppLimit(@PathVariable String appCode, @RequestParam(defaultValue = "1000000") Integer limit) {
+    public ResResult updateAppLimit(@PathVariable String appCode, @RequestParam(defaultValue = "1000000") Long limit) {
         log.info("[app 修改产品限量 请求], appCode -> {}, limit -> {}", appCode, limit);
-        Integer data = appLimitService.updateLimit(appCode, limit);
+        Long data = appLimitService.updateLimit(appCode, limit);
         log.info("[app 修改产品限量 响应], data -> {}", data);
         return ResCode.OK.setData(data);
     }

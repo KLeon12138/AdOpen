@@ -4,9 +4,9 @@ import org.springframework.scheduling.annotation.Async;
 
 /**
  * @author leon
- * @date 2021-11-29 16:53
+ * @date 2021-12-24 12:44
  */
-public interface ClickYdwxService {
+public interface ClickFhService {
     /**
      * 点击上报
      *

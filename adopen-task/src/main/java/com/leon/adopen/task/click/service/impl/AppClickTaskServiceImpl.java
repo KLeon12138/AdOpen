@@ -1,7 +1,7 @@
 package com.leon.adopen.task.click.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.leon.adopen.common.constants.app.AppComConstants;
+import com.leon.adopen.common.constants.app.AppComConst;
 import com.leon.adopen.common.constants.date.InitDateConstants;
 import com.leon.adopen.common.constants.symbol.NumberConstants;
 import com.leon.adopen.common.constants.symbol.SymbolConstants;
@@ -91,7 +91,7 @@ public class AppClickTaskServiceImpl implements AppClickTaskService {
      */
     @Override
     public List<AppClick> initClick(String date) throws AdopenException {
-        List<AppBind> appBinds = appBindDao.findAllByIsdel(AppComConstants.APP_BIND_NOT_DEL);
+        List<AppBind> appBinds = appBindDao.findAllByIsdel(AppComConst.APP_BIND_NOT_DEL);
         if (appBinds.size() == NumberConstants.SIZE_ZERO) {
             throw new AdopenException(ExCode.queryDataFailed, "分配产品为空");
         }

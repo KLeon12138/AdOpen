@@ -1,9 +1,10 @@
 package com.leon.adopen.common.utils;
 
-import com.leon.adopen.common.constants.app.AppBindStatusConstants;
-import com.leon.adopen.common.constants.app.AppCodeConstants;
-import com.leon.adopen.common.constants.app.AppComConstants;
-import com.leon.adopen.common.constants.app.AppLimitConstants;
+import com.leon.adopen.common.constants.app.AppBindStatusConst;
+import com.leon.adopen.common.constants.app.AppCodeConst;
+import com.leon.adopen.common.constants.app.AppComConst;
+import com.leon.adopen.common.constants.app.AppLimitConst;
+import com.leon.adopen.common.exception.example.AdopenException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -22,20 +23,11 @@ public class CheckAppUtils {
      * @param appCode     产品编码
      * @param channelFlux 渠道现量
      * @param date        当前日期
-     * @return 是否满量
+     * @return 是否满量appStatusUtils
      */
-    public Boolean checkLimitFull(String appCode, Integer channelFlux, String date) {
-        Integer limit = null;
-        boolean result = false;
-        try {
-            limit = this.checkLimit(appCode);
-            log.info("appCode -> {}, currentCount -> {}, limit -> {}", appCode, channelFlux, limit);
-            result = channelFlux.compareTo(limit) >= 0;
-        } catch (Exception e) {
-            log.error("appCode -> {}, date -> {}, currentCount -> {}, limit ->{}", appCode, date, channelFlux, limit);
-            log.error("error message -> {}", e.getMessage());
-        }
-        return result;
+    public Boolean checkLimitFull(String appCode, Long channelFlux, String date) {
+        log.info("appCode -> {}, currentCount -> {}, limit -> {}, date -> {}", appCode, channelFlux, this.checkLimit(appCode), date);
+        return channelFlux.compareTo(this.checkLimit(appCode)) >= 0;
     }
 
     /**
@@ -44,20 +36,14 @@ public class CheckAppUtils {
      * @param appCode 产品编码
      * @return {@link  Integer}    产品限量
      */
-    private Integer checkLimit(String appCode) {
-        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
-            return AppLimitConstants.LIMIT_PPSG_A1;
+    private Long checkLimit(String appCode) {
+        if (appCode.equals(AppCodeConst.YZ_A1)) {
+            return AppLimitConst.LIMIT_YZ_A1;
         }
-        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
-            return AppLimitConstants.LIMIT_PPSG_A2;
+        if (appCode.equals(AppCodeConst.YZ_A2)) {
+            return AppLimitConst.LIMIT_YZ_A2;
         }
-        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
-            return AppLimitConstants.LIMIT_FDDS_A1;
-        }
-        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
-            return AppLimitConstants.LIMIT_FDDS_A2;
-        }
-        return AppLimitConstants.DEFAULT_APP_LIMIT;
+        return AppLimitConst.DEFAULT_APP_LIMIT;
     }
 
     /**
@@ -67,18 +53,36 @@ public class CheckAppUtils {
      * @return 产品绑定上线状态
      */
     public Boolean checkAppBindIsOn(String appCode) {
-        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
-            return AppBindStatusConstants.BIND_PPSG_A1;
+        if (appCode.equals(AppCodeConst.DTS_A1)) {
+            return AppBindStatusConst.BIND_DTS_A1;
         }
-        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
-            return AppBindStatusConstants.BIND_PPSG_A2;
+        if (appCode.equals(AppCodeConst.DTS_A2)) {
+            return AppBindStatusConst.BIND_DTS_A2;
         }
-        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
-            return AppBindStatusConstants.BIND_FDDS_A1;
+        if (appCode.equals(AppCodeConst.DTS_A3)) {
+            return AppBindStatusConst.BIND_DTS_A3;
         }
-        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
-            return AppBindStatusConstants.BIND_FDDS_A2;
+        if (appCode.equals(AppCodeConst.DTS_A4)) {
+            return AppBindStatusConst.BIND_DTS_A4;
         }
-        return AppComConstants.APP_BIND_STATUS_DOWN;
+        if (appCode.equals(AppCodeConst.DTS_A5)) {
+            return AppBindStatusConst.BIND_DTS_A5;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A1)) {
+            return AppBindStatusConst.BIND_DZG_A1;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A2)) {
+            return AppBindStatusConst.BIND_DZG_A2;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A3)) {
+            return AppBindStatusConst.BIND_DZG_A3;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A4)) {
+            return AppBindStatusConst.BIND_DZG_A4;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A5)) {
+            return AppBindStatusConst.BIND_DZG_A5;
+        }
+        return AppComConst.APP_BIND_STATUS_DOWN;
     }
 }

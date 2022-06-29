@@ -32,4 +32,12 @@ public class BackRest {
         log.info("[callback response] -> {}", JSON.toJSON(clickResponse));
         return clickResponse;
     }
+
+    @GetMapping("/to/me")
+    public Object callbackMe(@RequestParam String appid, @RequestParam String idfa, @RequestParam String ip) throws AdopenDbException {
+        log.info("[callback to me request] [appid] -> {}, idfa -> {}, ip -> {}", appid, idfa, ip);
+        Object clickResponse = backService.backToMe(appid, idfa, ip);
+        log.info("[callback to me response] -> {}", JSON.toJSON(clickResponse));
+        return clickResponse;
+    }
 }

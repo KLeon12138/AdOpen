@@ -85,11 +85,11 @@ public class AppPortUtil {
         return encode(host + UrlConstants.CALLBACK_URL + "appid=" + appid + "&idfa=" + idfa + "&ip=" + ip + "&sign=leon");
     }
 
-    public String getBackToMe(String appid, String idfa, String ip, String source, String remark) throws AdopenException, UnsupportedEncodingException {
-        if (appid.isEmpty() || idfa.isEmpty() || remark.isEmpty()) {
-            throw new AdopenException(ExCode.badArgumentValue, "appid:" + appid + ", idfa:" + idfa + ", remark:" + remark + ", exist param is null");
+    public String getBackToMe(String appid, String idfa, String ip) throws AdopenException, UnsupportedEncodingException {
+        if (appid.isEmpty() || idfa.isEmpty()) {
+            throw new AdopenException(ExCode.badArgumentValue, "appid:" + appid + ", idfa:" + idfa + ", exist param is null");
         }
-        return encode(host + UrlConstants.BACK_TO_ME_URL + "appid=" + appid + "&idfa=" + idfa + "&ip=" + ip + "&source=" + source + "&sign=xuan&remark=" + remark);
+        return encode(host + UrlConstants.BACK_TO_ME_URL + "appid=" + appid + "&idfa=" + idfa + "&ip=" + ip + "&sign=jr");
     }
 
     public String getBackToLeonServer(String appid, String idfa, String ip, String remark) throws AdopenException, UnsupportedEncodingException {

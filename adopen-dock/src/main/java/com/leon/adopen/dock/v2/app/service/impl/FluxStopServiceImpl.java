@@ -1,8 +1,8 @@
 package com.leon.adopen.dock.v2.app.service.impl;
 
-import com.leon.adopen.common.constants.app.AppBindStatusConstants;
-import com.leon.adopen.common.constants.app.AppCodeConstants;
-import com.leon.adopen.common.constants.app.AppComConstants;
+import com.leon.adopen.common.constants.app.AppBindStatusConst;
+import com.leon.adopen.common.constants.app.AppCodeConst;
+import com.leon.adopen.common.constants.app.AppComConst;
 import com.leon.adopen.dock.v2.app.service.FluxStopService;
 import com.leon.adopen.domain.dao.AppBindDao;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class FluxStopServiceImpl implements FluxStopService {
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Throwable.class)
     public void checkToStop(String appCode) {
         this.stopCurrentServerStatus(appCode);
-        appBindDao.updateAppBindStatusByChannelCode(appCode, AppComConstants.APP_BIND_STATUS_DOWN);
+        appBindDao.updateAppBindStatusByChannelCode(appCode, AppComConst.APP_BIND_STATUS_DOWN);
     }
 
     /**
@@ -35,17 +35,35 @@ public class FluxStopServiceImpl implements FluxStopService {
      * @param appCode 产品编码
      */
     private void stopCurrentServerStatus(String appCode) {
-        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
-            AppBindStatusConstants.BIND_PPSG_A1 = false;
+        if (appCode.equals(AppCodeConst.DTS_A1)) {
+            AppBindStatusConst.BIND_DTS_A1 = false;
         }
-        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
-            AppBindStatusConstants.BIND_PPSG_A2 = false;
+        if (appCode.equals(AppCodeConst.DTS_A2)) {
+            AppBindStatusConst.BIND_DTS_A2 = false;
         }
-        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
-            AppBindStatusConstants.BIND_FDDS_A1 = false;
+        if (appCode.equals(AppCodeConst.DTS_A3)) {
+            AppBindStatusConst.BIND_DTS_A3 = false;
         }
-        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
-            AppBindStatusConstants.BIND_FDDS_A2 = false;
+        if (appCode.equals(AppCodeConst.DTS_A4)) {
+            AppBindStatusConst.BIND_DTS_A4 = false;
+        }
+        if (appCode.equals(AppCodeConst.DTS_A5)) {
+            AppBindStatusConst.BIND_DTS_A5 = false;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A1)) {
+            AppBindStatusConst.BIND_DZG_A1 = false;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A2)) {
+            AppBindStatusConst.BIND_DZG_A2 = false;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A3)) {
+            AppBindStatusConst.BIND_DZG_A3 = false;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A4)) {
+            AppBindStatusConst.BIND_DZG_A4 = false;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A5)) {
+            AppBindStatusConst.BIND_DZG_A5 = false;
         }
     }
 }

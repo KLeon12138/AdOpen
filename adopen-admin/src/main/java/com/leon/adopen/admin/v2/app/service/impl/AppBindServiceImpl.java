@@ -5,9 +5,9 @@ import com.leon.adopen.admin.v2.app.request.AppBindAllotRequest;
 import com.leon.adopen.admin.v2.app.service.AppBindService;
 import com.leon.adopen.admin.v2.app.vo.AppBindListVo;
 import com.leon.adopen.admin.v2.app.vo.AppBindListVoPage;
-import com.leon.adopen.common.constants.app.AppBindStatusConstants;
-import com.leon.adopen.common.constants.app.AppCodeConstants;
-import com.leon.adopen.common.constants.app.AppComConstants;
+import com.leon.adopen.common.constants.app.AppBindStatusConst;
+import com.leon.adopen.common.constants.app.AppCodeConst;
+import com.leon.adopen.common.constants.app.AppComConst;
 import com.leon.adopen.common.constants.date.InitDateConstants;
 import com.leon.adopen.common.exception.code.ExCode;
 import com.leon.adopen.common.exception.example.AdopenException;
@@ -118,7 +118,7 @@ public class AppBindServiceImpl implements AppBindService {
         if (StringUtils.isEmpty(request.getAppId())) {
             throw new AdopenException(ExCode.lackArgument, "缺省产品id");
         }
-        if (appBindDao.existsByAppIdAndIsdel(request.getAppId(), AppComConstants.APP_BIND_NOT_DEL)) {
+        if (appBindDao.existsByAppIdAndIsdel(request.getAppId(), AppComConst.APP_BIND_NOT_DEL)) {
             throw new AdopenException(ExCode.repeatData, "该产品已被分配,请重新配置;产品id:" + request.getAppId());
         }
         if (StringUtils.isEmpty(request.getCpId())) {
@@ -127,7 +127,7 @@ public class AppBindServiceImpl implements AppBindService {
         if (StringUtils.isEmpty(request.getChannelCode())) {
             throw new AdopenException(ExCode.lackArgument, "缺省渠道码");
         }
-        if (appBindDao.existsByChannelCodeAndIsdel(request.getChannelCode(), AppComConstants.APP_BIND_NOT_DEL)) {
+        if (appBindDao.existsByChannelCodeAndIsdel(request.getChannelCode(), AppComConst.APP_BIND_NOT_DEL)) {
             throw new AdopenException(ExCode.repeatData, "该渠道码已被分配,请重新配置;渠道码:" + request.getChannelCode());
         }
         if (StringUtils.isEmpty(request.getChannelPrice())) {
@@ -158,7 +158,7 @@ public class AppBindServiceImpl implements AppBindService {
         if (StringUtils.isEmpty(cp)) {
             throw new AdopenException(ExCode.queryDataFailed, "无该cp信息;cp id:" + request.getCpId());
         }
-        if (appBindDao.existsByChannelCodeAndIsdel(request.getChannelCode(), AppComConstants.APP_BIND_NOT_DEL)) {
+        if (appBindDao.existsByChannelCodeAndIsdel(request.getChannelCode(), AppComConst.APP_BIND_NOT_DEL)) {
             throw new AdopenException(ExCode.repeatData, "该渠道码已被占用,请重新分配;渠道码:" + request.getChannelCode());
         }
         if (appClickDao.existsByChannelCodeAndClickDate(request.getChannelCode(), InitDateConstants.DATE_TODAY)) {
@@ -204,22 +204,46 @@ public class AppBindServiceImpl implements AppBindService {
      */
     @Override
     public Boolean updateIsOn(String appCode, Boolean isOn) {
-        if (appCode.equals(AppCodeConstants.PPSG_A1)) {
-            AppBindStatusConstants.BIND_PPSG_A1 = isOn;
-            return AppBindStatusConstants.BIND_PPSG_A1;
+        if (appCode.equals(AppCodeConst.DTS_A1)) {
+            AppBindStatusConst.BIND_DTS_A1 = isOn;
+            return AppBindStatusConst.BIND_DTS_A1;
         }
-        if (appCode.equals(AppCodeConstants.PPSG_A2)) {
-            AppBindStatusConstants.BIND_PPSG_A2 = isOn;
-            return AppBindStatusConstants.BIND_PPSG_A2;
+        if (appCode.equals(AppCodeConst.DTS_A2)) {
+            AppBindStatusConst.BIND_DTS_A2 = isOn;
+            return AppBindStatusConst.BIND_DTS_A2;
         }
-        if (appCode.equals(AppCodeConstants.FDDS_A1)) {
-            AppBindStatusConstants.BIND_FDDS_A1 = isOn;
-            return AppBindStatusConstants.BIND_FDDS_A1;
+        if (appCode.equals(AppCodeConst.DTS_A3)) {
+            AppBindStatusConst.BIND_DTS_A3 = isOn;
+            return AppBindStatusConst.BIND_DTS_A3;
         }
-        if (appCode.equals(AppCodeConstants.FDDS_A2)) {
-            AppBindStatusConstants.BIND_FDDS_A2 = isOn;
-            return AppBindStatusConstants.BIND_FDDS_A2;
+        if (appCode.equals(AppCodeConst.DTS_A4)) {
+            AppBindStatusConst.BIND_DTS_A4 = isOn;
+            return AppBindStatusConst.BIND_DTS_A4;
         }
-        return AppBindStatusConstants.DEFAULT_APP_BIND_STATUS;
+        if (appCode.equals(AppCodeConst.DTS_A5)) {
+            AppBindStatusConst.BIND_DTS_A5 = isOn;
+            return AppBindStatusConst.BIND_DTS_A5;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A1)) {
+            AppBindStatusConst.BIND_DZG_A1 = isOn;
+            return AppBindStatusConst.BIND_DZG_A1;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A2)) {
+            AppBindStatusConst.BIND_DZG_A2 = isOn;
+            return AppBindStatusConst.BIND_DZG_A2;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A3)) {
+            AppBindStatusConst.BIND_DZG_A3 = isOn;
+            return AppBindStatusConst.BIND_DZG_A3;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A4)) {
+            AppBindStatusConst.BIND_DZG_A4 = isOn;
+            return AppBindStatusConst.BIND_DZG_A4;
+        }
+        if (appCode.equals(AppCodeConst.DZG_A5)) {
+            AppBindStatusConst.BIND_DZG_A5 = isOn;
+            return AppBindStatusConst.BIND_DZG_A5;
+        }
+        return AppBindStatusConst.DEFAULT_APP_BIND_STATUS;
     }
 }

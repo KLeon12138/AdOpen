@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Async;
  * @author leon
  * @date 2021-12-24 12:44
  */
-public interface ClickSzxService {
+public interface ClickTtbyService {
     /**
      * 点击上报
      *

@@ -87,6 +87,21 @@ public class BackServiceImpl implements BackService {
         }
         return response;
     }
+
+    @Override
+    public Object backToMe(String appid, String idfa, String ip) {
+        log.info("-------------------回调自定义渠道数据(back to me)-------------------");
+        AppCallbackLog backInfo = new AppCallbackLog();
+        backInfo.setAdAppId(appid);
+        backInfo.setIdfa(idfa);
+        backInfo.setCallback(null);
+        backInfo.setResult("ok");
+        backInfo.setStatus((byte) 1);
+        backInfo.setInsertTime(new Date());
+        callbackLogDao.save(backInfo);
+        Map<String, Object> response = new HashMap<>(16);
+        return response.put("result", "ok");
+    }
 //    private String backScale(BaseInfo info) throws AdopenDbException {
 //        if (scaleManager.ifscale(Integer.parseInt(info.getAppId()))) {
 //            scaleManager.update(AppScaleStatusConstants.STATUS_ONE, Integer.parseInt(info.getAppId()));
