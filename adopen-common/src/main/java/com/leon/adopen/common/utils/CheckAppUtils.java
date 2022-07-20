@@ -4,7 +4,6 @@ import com.leon.adopen.common.constants.app.AppBindStatusConst;
 import com.leon.adopen.common.constants.app.AppCodeConst;
 import com.leon.adopen.common.constants.app.AppComConst;
 import com.leon.adopen.common.constants.app.AppLimitConst;
-import com.leon.adopen.common.exception.example.AdopenException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +41,51 @@ public class CheckAppUtils {
         }
         if (appCode.equals(AppCodeConst.YZ_A2)) {
             return AppLimitConst.LIMIT_YZ_A2;
+        }
+        if (appCode.equals(AppCodeConst.YZ_A3)) {
+            return AppLimitConst.LIMIT_YZ_A3;
+        }
+        if (appCode.equals(AppCodeConst.YZ_A4)) {
+            return AppLimitConst.LIMIT_YZ_A4;
+        }
+        if (appCode.equals(AppCodeConst.YZ_A5)) {
+            return AppLimitConst.LIMIT_YZ_A5;
+        }
+        if (appCode.equals(AppCodeConst.FD_A1)) {
+            return AppLimitConst.LIMIT_FD_A1;
+        }
+        if (appCode.equals(AppCodeConst.FD_A2)) {
+            return AppLimitConst.LIMIT_FD_A2;
+        }
+        if (appCode.equals(AppCodeConst.FD_A3)) {
+            return AppLimitConst.LIMIT_FD_A3;
+        }
+        if (appCode.equals(AppCodeConst.FD_A4)) {
+            return AppLimitConst.LIMIT_FD_A4;
+        }
+        if (appCode.equals(AppCodeConst.FD_A5)) {
+            return AppLimitConst.LIMIT_FD_A5;
+        }
+        if (appCode.equals(AppCodeConst.FD_A6)) {
+            return AppLimitConst.LIMIT_FD_A6;
+        }
+        if (appCode.equals(AppCodeConst.FD_A7)) {
+            return AppLimitConst.LIMIT_FD_A7;
+        }
+        if (appCode.equals(AppCodeConst.FD_A8)) {
+            return AppLimitConst.LIMIT_FD_A8;
+        }
+        if (appCode.equals(AppCodeConst.YXF_A1)) {
+            return AppLimitConst.LIMIT_YXF_A1;
+        }
+        if (appCode.equals(AppCodeConst.YXF_A2)) {
+            return AppLimitConst.LIMIT_YXF_A2;
+        }
+        if (appCode.equals(AppCodeConst.JP_A1)) {
+            return AppLimitConst.LIMIT_JP_A1;
+        }
+        if (appCode.equals(AppCodeConst.JP_A2)) {
+            return AppLimitConst.LIMIT_JP_A2;
         }
         return AppLimitConst.DEFAULT_APP_LIMIT;
     }

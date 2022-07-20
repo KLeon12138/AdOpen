@@ -85,7 +85,7 @@ public class AppPortUtil {
         return encode(host + UrlConstants.CALLBACK_URL + "appid=" + appid + "&idfa=" + idfa + "&ip=" + ip + "&sign=leon");
     }
 
-    public String getBackToMe(String appid, String idfa, String ip) throws AdopenException, UnsupportedEncodingException {
+    public String backToMe(String appid, String idfa, String ip) throws AdopenException, UnsupportedEncodingException {
         if (appid.isEmpty() || idfa.isEmpty()) {
             throw new AdopenException(ExCode.badArgumentValue, "appid:" + appid + ", idfa:" + idfa + ", exist param is null");
         }

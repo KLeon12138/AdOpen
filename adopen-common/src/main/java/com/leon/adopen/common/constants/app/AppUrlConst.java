@@ -17,4 +17,8 @@ public class AppUrlConst {
      * 勇者
      */
     public static final String URL_YZ = "http://tk.huiyaohuyu.com/tk/gemeng?";
+    /**
+     * 樊登
+     */
+    public static final String URL_FD = "https://uri6.com/tkio";
 }

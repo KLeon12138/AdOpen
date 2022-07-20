@@ -91,6 +91,7 @@ public class BackServiceImpl implements BackService {
     @Override
     public Object backToMe(String appid, String idfa, String ip) {
         log.info("-------------------回调自定义渠道数据(back to me)-------------------");
+        log.info("[sync data] appid -> {}, idfa -> {}, ip -> {}", appid, idfa, ip);
         AppCallbackLog backInfo = new AppCallbackLog();
         backInfo.setAdAppId(appid);
         backInfo.setIdfa(idfa);
@@ -100,7 +101,9 @@ public class BackServiceImpl implements BackService {
         backInfo.setInsertTime(new Date());
         callbackLogDao.save(backInfo);
         Map<String, Object> response = new HashMap<>(16);
-        return response.put("result", "ok");
+        response.put("result", "ok");
+        log.info("[sync response] info -> {}", JSON.toJSONString(response));
+        return response;
     }
 //    private String backScale(BaseInfo info) throws AdopenDbException {
 //        if (scaleManager.ifscale(Integer.parseInt(info.getAppId()))) {

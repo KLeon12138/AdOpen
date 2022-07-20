@@ -6,30 +6,6 @@ package com.leon.adopen.common.constants.app;
  */
 public class AppCodeConst {
     /**
-     * 啪啪三国-A1
-     */
-    public static final String PPSG_A1 = "ppsgA1";
-    /**
-     * 啪啪三国-A2
-     */
-    public static final String PPSG_A2 = "ppsgA2";
-    /**
-     * 樊登读书-A1
-     */
-    public static final String FDDS_A1 = "fddsA1";
-    /**
-     * 樊登读书-A2
-     */
-    public static final String FDDS_A2 = "fddsA2";
-    /**
-     * 海王捕鱼-A1
-     */
-    public static final String HWBY_A1 = "hwbyA1";
-    /**
-     * 海王捕鱼-A2
-     */
-    public static final String HWBY_A2 = "hwbyA2";
-    /**
      * 大天使-A1
      */
     public static final String DTS_A1 = "dtsA1";
@@ -70,14 +46,6 @@ public class AppCodeConst {
      */
     public static final String DZG_A5 = "dzgA5";
     /**
-     * 天天捕鱼-A1
-     */
-    public static final String TTBY_A1 = "ttbyA1";
-    /**
-     * 天天捕鱼-A2
-     */
-    public static final String TTBY_A2 = "ttbyA2";
-    /**
      * 仙战-A1
      */
     public static final String XZ_A1 = "xzA1";
@@ -86,9 +54,9 @@ public class AppCodeConst {
      */
     public static final String XZ_A2 = "xzA2";
     /**
-     * 凤凰-A1
+     * 仙战-A4
      */
-    public static final String FH_A1 = "fhA1";
+    public static final String XZ_A4 = "xzA4";
     /**
      * 勇者养成记-A1
      */
@@ -110,11 +78,63 @@ public class AppCodeConst {
      */
     public static final String YZ_A5 = "yzA5";
     /**
-     * 勇者养成记-A6
+     * 樊登-A1
      */
-    public static final String YZ_A6 = "yzA6";
+    public static final String FD_A1 = "fdA1";
     /**
-     * 勇者养成记-A7
+     * 樊登-A2
      */
-    public static final String YZ_A7 = "yzA7";
+    public static final String FD_A2 = "fdA2";
+    /**
+     * 樊登-A3
+     */
+    public static final String FD_A3 = "fdA3";
+    /**
+     * 樊登-A4
+     */
+    public static final String FD_A4 = "fdA4";
+    /**
+     * 樊登-A5
+     */
+    public static final String FD_A5 = "fdA5";
+    /**
+     * 樊登-A6
+     */
+    public static final String FD_A6 = "fdA6";
+    /**
+     * 樊登-A7
+     */
+    public static final String FD_A7 = "fdA7";
+    /**
+     * 樊登-A8
+     */
+    public static final String FD_A8 = "fdA8";
+    /**
+     * 王国-A2
+     */
+    public static final String WG_A2 = "wgA2";
+    /**
+     * 游小福-A1
+     */
+    public static final String YXF_A1 = "yxfA1";
+    /**
+     * 游小福-A2
+     */
+    public static final String YXF_A2 = "yxfA2";
+    /**
+     * 极品芝麻官-A1
+     */
+    public static final String JP_A1 = "jpA1";
+    /**
+     * 极品芝麻官-A2
+     */
+    public static final String JP_A2 = "jpA2";
+    /**
+     * 极品芝麻官-A3
+     */
+    public static final String JP_A3 = "jpA3";
+    /**
+     * 极品芝麻官-A4
+     */
+    public static final String JP_A4 = "jpA4";
 }

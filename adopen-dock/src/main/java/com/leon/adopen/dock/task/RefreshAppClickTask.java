@@ -23,7 +23,17 @@ public class RefreshAppClickTask {
         AppClickConst.CLICK_1803 = 0L;
         AppClickConst.CLICK_1804 = 0L;
         AppClickConst.CLICK_1805 = 0L;
-        AppClickConst.CLICK_1806 = 0L;
-        AppClickConst.CLICK_1807 = 0L;
+        AppClickConst.CLICK_1901 = 0L;
+        AppClickConst.CLICK_1902 = 0L;
+        AppClickConst.CLICK_1903 = 0L;
+        AppClickConst.CLICK_1904 = 0L;
+        AppClickConst.CLICK_1905 = 0L;
+        AppClickConst.CLICK_1906 = 0L;
+        AppClickConst.CLICK_1907 = 0L;
+        AppClickConst.CLICK_1908 = 0L;
+        AppClickConst.CLICK_2101 = 0L;
+        AppClickConst.CLICK_2102 = 0L;
+        AppClickConst.CLICK_2201 = 0L;
+        AppClickConst.CLICK_2202 = 0L;
     }
 }
